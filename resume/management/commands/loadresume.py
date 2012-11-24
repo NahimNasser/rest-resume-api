@@ -7,7 +7,8 @@ class Command(BaseCommand):
     help = 'Creates fake data'
 
     def handle(self, *args, **options):
-        user = User(username='nnasser', first_name='Nahim', last_name='Nasser', email='fakemail@gmail.com', password='testpassword')
+        user = User(username='nnasser', first_name='Nahim', last_name='Nasser', email='fakemail@gmail.com')
+        user.set_password('testpassword')
         user.save()
         resume = Resume(title='Software Engineer', location='Toronto, Canada', industry='Software Engineering', user=user)
         resume.save()
