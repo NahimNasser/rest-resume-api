@@ -6,7 +6,7 @@ from resume import userviews
 
 urlpatterns = patterns('',
     url(r'^resumes/?$', userviews.ListOrCreateOwnerAPIView.as_view(model=models.Resume, serializer_class=serializers.ResumeSerializer)),
-    url(r'^resumes/(?P<user__username>[^/]+)/?$', userviews.ListResumeAPIView.as_view(model=models.Resume, serializer_class=serializers.FullResumeSerializer)),
+    url(r'^resumes/(?P<user__username>[^/]+)/?$', userviews.ListResumeAPIView.as_view(model=models.Resume, serializer_class=serializers.FullResumeSerializer, permission_classes=())),
     url(r'^workexperiences/?$', userviews.ListOrCreateSubResumeObjectAPIView.as_view(model=models.WorkExperience, serializer_class=serializers.WorkExperienceSerializer)),
     url(r'^educations/?$', userviews.ListOrCreateSubResumeObjectAPIView.as_view(model=models.Education, serializer_class=serializers.EducationSerializer)),
     url(r'^users/?$', generics.CreateAPIView.as_view(model=models.User, serializer_class=serializers.NewUserSerializer, permission_classes=())),
